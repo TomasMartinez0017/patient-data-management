@@ -10,22 +10,22 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add("no-scroll");
+      document.body.classList.add("noScroll");
     } else {
-      document.body.classList.remove("no-scroll");
+      document.body.classList.remove("noScroll");
     }
 
     return () => {
-      document.body.classList.remove("no-scroll");
+      document.body.classList.remove("noScroll");
     };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
+    <div className="modalOverlay" onClick={onClose}>
+      <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+        <button className="modalClose" onClick={onClose}>
           &times;
         </button>
         {children}
